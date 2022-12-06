@@ -1,8 +1,26 @@
+// Intro variables 
 var startButton = document.getElementById('start');
 var submitButton = document.getElementById('submit');
 var initTracking = document.getElementById('initials');
 var feedbackTracking = document.getElementById('feedback');
 
+// Intro timer linked to start button
+var timerTracker = document.querySelector("time");
+var secondsLeft = 60;
+function setTime(){
+var timerInterval = setInterval(function(){
+    secondsLeft--;
+    if (secondsLeft === 0) {
+clearInterval(timerInterval);
+sendMessage();
+    }
+}, 
+1000);
+};
+// Intro faster increment if answer is incorrect
+
+
+// Intro questions 
 var questions = [
 {
 title: "Question 1",
@@ -35,6 +53,7 @@ answer: "",
 
 }, 
 
+// Intro methodology 
 
 ];
 
@@ -43,7 +62,6 @@ for (var i = 0; i < questions.length; i++){
         for (var j = 0; j < questions[i].choices.length; j++)
         {
             console.log(questions[i].choices[j] + " " );
-
-
         }
-}
+};
+
