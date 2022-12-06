@@ -17,6 +17,13 @@ sendMessage();
 }, 
 1000);
 };
+// Init game & clear "start" screen 
+function initQuiz () {
+
+var startScreen = document.getElementById('start-screen');
+startScreen.classList.add("hide")
+}
+startButton.addEventListener('click', initQuiz) 
 // Intro faster increment if answer is incorrect
 
 
@@ -58,7 +65,7 @@ answer: "",
 ];
 
 for (var i = 0; i < questions.length; i++){
-    console.log(questions[i];
+    console.log(questions[i])
         for (var j = 0; j < questions[i].choices.length; j++)
         {
             console.log(questions[i].choices[j] + " " );
