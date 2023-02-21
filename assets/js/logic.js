@@ -7,36 +7,36 @@ var questions = document.getElementById('questions');
 var timeEl = document.querySelector('#time');
 var questions = document.querySelector('#questions');
 var finalScore = document.querySelector('#finalScore');
-var startScreen = document.getElementById('#start-screen');
+var startScreen = document.querySelector('#start-screen');
 var timerTracker = document.querySelector("time");
 var choicesEl = document.querySelector('#choices');
 var questionsIndex  = 0;
 var secondsLeft = 60;
 var timer;
-var questionsTitle = document.querySelector("#questions-title");
+var questionsTitle = document.querySelector("#question-title");
 
 
 
 
 
-function setTime(){
-var timerInterval = setInterval(function(){
-    secondsLeft--;
-    if (secondsLeft === 0) {
-clearInterval(timerInterval);
-sendMessage();
-    }
-}, 
-1000);
-};
+// function setTime(){
+// var timerInterval = setInterval(function(){
+//     secondsLeft--;
+//     if (secondsLeft === 0) {
+// clearInterval(timerInterval);
+// sendMessage();
+//     }
+// }, 
+// 1000);
+// };
 
 
 // function to start  quiz
 function startQuiz() {
-startScreen.setAttribute('class', 'hide');
+startScreen.setAttribute("class", "hide");
 questions.setAttribute('class', 'show');
-timer = setInterval();
-receiveQuestions()
+timer = setInterval(timerTick(),1000);
+receiveQuestions();
 }
 
 function timerTick(){
@@ -60,7 +60,7 @@ startingQuestion.choices.forEach(function(choice, index){
     choicesEl.appendChild(choices);
 })
 }
-
+// function to flick through question
 function questionsClickFunc(){
     if(this.value !== questionsArr[questionsIndex].answer){
         secondsLeft -= 15;
@@ -95,15 +95,18 @@ if(questionsIndex === questionsArr.length){
 function endQuiz(){
     clearInterval(timer);
 
-    var highScoreEl = document.querySelector('#highscore-section');
-    highScoreEl.setAttribute('class', 'show');
+    // var highScoreEl = document.querySelector('#highscore-section');
+    // highScoreEl.setAttribute('class', 'show');
 
 
     var lastScore = document.querySelector('#final-score');
     lastScore.textContent =  secondsLeft;
 
-    questions.setAttribute('class', 'hide')
+    questions.setAttribute('class', 'hide');
 }
+
+startButton.onclick = startQuiz;
+
 
 // Introduce questions 
 var questionsArr = [
@@ -139,35 +142,3 @@ var questionsArr = [
 }, 
 ];
 
-
-// // Intro methodology 
-
-// for (var i = 0; i < questions.length; i++){
-    //     console.log(questions[i])
-    //         for (var j = 0; j < questions[i].choices.length; j++)
-    //         {
-        //             console.log(questions[i].choices[j] + " " );
-        //         }
-        // };
-        
-        
-        // var questions;
-        
-        // function start_quiz(){
-            //   questions = 0;
-            //   show_question;
-        //   questions.classList.remove("hide")
-        // };
-        
-        // function show_question() {
-        //   questionDisplay.textContent = questions[questions].Question;
-        //   for (j = 0; j < 4; j++) {
-        //     var button = document.createElement('button')
-        //     button.innerText = questions[questions].Answers[j]
-        //     answersDiv.appendChild(button);
-        //   };
-        
-        // // next_question() {
-        // //   question++;
-        // //   check if all questions have been asked then either show_question or end_quiz
-        // // }
