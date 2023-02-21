@@ -8,14 +8,16 @@ var timeEl = document.querySelector('#time');
 var questions = document.querySelector('#questions');
 var finalScore = document.querySelector('#finalScore');
 var startScreen = document.getElementById('#start-screen');
-
-
-
-
-// Intro timer linked to start button
 var timerTracker = document.querySelector("time");
+var choicesEl = document.querySelector('#choices');
+var questionsIndex  = 0;
 var secondsLeft = 60;
 var timer;
+var questionsTitle = document.querySelector("#questions-title");
+
+
+
+
 
 function setTime(){
 var timerInterval = setInterval(function(){
@@ -33,18 +35,35 @@ sendMessage();
 function startQuiz() {
 startScreen.setAttribute('class', 'hide');
 questions.setAttribute('class', 'show');
-timer = setInterval()
+timer = setInterval();
+receiveQuestions()
 }
 
 function timerTick(){
     secondsLeft --;
-    timeEl.textContent = secondsLeft
+    timeEl.textContent = secondsLeft;
+    if(secondsLeft <= 0) {
+        endQuiz();
+    }
+}
+// function to receive questions
+function receiveQuestions(){
+var startingQuestion = questionsArr[questionsIndex];
+questionsTitle.textContent = startingQuestion.title;
+choicesEl.innerHTML = '';
+startingQuestion.choices.forEach(function(choice, index){
+    var choices = document.createElement('button');
+    choices.setAttribute('class','choice');
+    choices.setAttribute('value',choice);
+    choices.textContent = index + 1 + '. ' + choice;
+    choices.onclick = questionsClickFunc;
+    choicesEl.appendChild(choices);
+})
 }
 
 
-
 // Introduce questions 
-var questions = [
+var questionsArr = [
     {
         title: "Question 1",
         choices: ["A","b","c","d"],
