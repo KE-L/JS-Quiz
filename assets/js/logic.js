@@ -61,6 +61,36 @@ startingQuestion.choices.forEach(function(choice, index){
 })
 }
 
+function questionsClickFunc(){
+    if(this.value !== questionsArr[questionsIndex].answer){
+        secondsLeft -= 15;
+
+        if(secondsLeft < 0){
+            secondsLeft = 0;
+        }
+timeEl.textContent  = secondsLeft;
+
+feedbackTracking.textContent = 'Wrong answer';
+
+
+    } else {
+        feedbackTracking.textContent = 'Correct answer';
+    }
+
+feedbackTracking.setAttribute('class', 'feedback');
+setTimeout(function(){
+    feedbackTracking.setAttribute('class', 'feeback hide')
+},1000);
+
+questionsIndex ++;
+
+if(questionsIndex === questionsArr.length){
+    endQuiz()
+} else {
+    receiveQuestions()
+}
+
+}
 
 // Introduce questions 
 var questionsArr = [
