@@ -90,6 +90,19 @@ if(questionsIndex === questionsArr.length){
     receiveQuestions()
 }
 
+};
+//function to end Quiz
+function endQuiz(){
+    clearInterval(timer);
+
+    var highScoreEl = document.querySelector('#highscore-section');
+    highScoreEl.setAttribute('class', 'show');
+
+
+    var lastScore = document.querySelector('#final-score');
+    lastScore.textContent =  secondsLeft;
+
+    questions.setAttribute('class', 'hide')
 }
 
 // Introduce questions 
