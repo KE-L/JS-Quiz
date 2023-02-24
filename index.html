@@ -1,59 +1,68 @@
 <!DOCTYPE html>
 <html lang="en-gb">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Coding Quiz</title>
 
-    <link rel="stylesheet" href="./assets/css/styles.css" />
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Coding Quiz</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <link rel="stylesheet" href="./assets/css/styles.css" />
+</head>
 
-  <body>
-    <div class="scores"><a href="highscores.html">View Highscores</a></div>
+<body class="bg bg-light">
+  <div class="scores"><a href="highscores.html">View Highscores</a></div>
 
-    <div class="timer">Time: <span id="time">0</span></div>
+  <div class="timer">Time: <span id="time">0</span></div>
 
-    <div class="wrapper">
-      <div id="start-screen" class="show">
-        <h1>Coding Quiz Challenge</h1>
-        <p>
-          Try to answer the following code-related questions within the time
-          limit. Keep in mind that incorrect answers will penalize your
-          score/time by ten seconds!
-        </p>
-        <button id="start">Start Quiz</button>
-      </div>
-
-      <div id="questions" class="hide">
-        <h2 id="question-title"></h2>
-        <div id="choices" class="choices"></div>
-      </div>
-
-      <div id="end-screen" class="hide">
-        <h2>All done!</h2>
-        <p>Your final score is <span id="final-score"></span>.</p>
-        <p>
-          Enter initials: <input type="text" id="initials" max="3" />
-          <button id="submit">Submit</button>
-        </p>
-      </div>
-
-      <div id="feedback" class="feedback hide"></div>
+  <div class="wrapper">
+    <div id="start-screen" class="show card bg-warning">
+      <h1>Coding Quiz Challenge</h1>
+      <p>
+        Try to answer the following code-related questions within the time
+        limit. Keep in mind that incorrect answers will penalize your
+        score/time by ten seconds!
+      </p>
+      <button id="start" class="btn btn-danger">Start Quiz</button>
     </div>
-    <section id="highscore-section" class="hide">
-      <div class="row">
-          <div id="high-score" class="col-md-12">
-              <h2>All done!</h2>
-              <h3>Your final score is <span id="final-score">0</span></h3>
-              <label for="initials-area">Enter initials:</label>
-              <input type="text" name="initials-area" maxlength="4" id="initials">
-              <button id="submit-button" type="submit">Submit</button>
-          </div>
+
+    <div id="questions" class="hide">
+      <h2 id="question-title" class="card bg-light"></h2>
+      <div id="choices" class="choices"></div>
+    </div>
+
+    <div id="end-screen" class="hide">
+      <h2>All done!</h2>
+      <p>Your final score is <span id="final-score"></span>.</p>
+      <p>
+        Enter initials: <input type="text" id="initials" max="3" />
+        <button id="submit">Submit</button>
+      </p>
+    </div>
+
+    <div id="feedback" class="feedback hide"></div>
+  </div>
+  <section id="highscore-section" class="hide">
+    <div class="row">
+      <div id="high-score" class="col-md-12">
+        <h2>All done!</h2>
+        <h3>Your final score is <span id="final-score">0</span></h3>
+        <label for="initials-area">Enter initials:</label>
+        <input type="text" name="initials-area" maxlength="4" id="initials">
+        <button id="submit-button" class="btn btn-warning" type="submit">Submit</button>
       </div>
+    </div>
   </section>
 
-    <!-- <script src="./assets/js/questions.js"></script> -->
-    <script src="./assets/js/logic.js"></script>
-  </body>
+  <!-- <script src="./assets/js/questions.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+    integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
+    crossorigin="anonymous"></script>
+  <script src="./assets/js/logic.js"></script>
+</body>
+
 </html>

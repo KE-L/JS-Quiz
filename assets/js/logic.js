@@ -10,7 +10,7 @@ var finalScore = document.querySelector('#finalScore');
 var startScreen = document.querySelector('#start-screen');
 var timerTracker = document.querySelector("time");
 var choicesEl = document.querySelector('#choices');
-var questionsIndex  = 0;
+var questionsIndex = 0;
 var secondsLeft = 60;
 var timer;
 var questionsTitle = document.querySelector("#question-title");
@@ -33,66 +33,66 @@ var questionsTitle = document.querySelector("#question-title");
 
 // function to start  quiz
 function startQuiz() {
-startScreen.setAttribute("class", "hide");
-questions.setAttribute('class', 'show');
-timer = setInterval(timerTick(),1000);
-receiveQuestions();
+    startScreen.setAttribute("class", "hide");
+    questions.setAttribute('class', 'show');
+    timer = setInterval(timerTick(), 1000);
+    receiveQuestions();
 }
 
-function timerTick(){
-    secondsLeft --;
+function timerTick() {
+    secondsLeft--;
     timeEl.textContent = secondsLeft;
-    if(secondsLeft <= 0) {
+    if (secondsLeft <= 0) {
         endQuiz();
     }
 }
 // function to receive questions
-function receiveQuestions(){
-var startingQuestion = questionsArr[questionsIndex];
-questionsTitle.textContent = startingQuestion.title;
-choicesEl.innerHTML = '';
-startingQuestion.choices.forEach(function(choice, index){
-    var choices = document.createElement('button');
-    choices.setAttribute('class','choice');
-    choices.setAttribute('value',choice);
-    choices.textContent = index + 1 + '. ' + choice;
-    choices.onclick = questionsClickFunc;
-    choicesEl.appendChild(choices);
-})
+function receiveQuestions() {
+    var startingQuestion = questionsArr[questionsIndex];
+    questionsTitle.textContent = startingQuestion.title;
+    choicesEl.innerHTML = '';
+    startingQuestion.choices.forEach(function (choice, index) {
+        var choices = document.createElement('button');
+        choices.setAttribute('class', 'choice , btn btn-info');
+        choices.setAttribute('value', choice);
+        choices.textContent = index + 1 + '. ' + choice;
+        choices.onclick = questionsClickFunc;
+        choicesEl.appendChild(choices);
+    })
 }
 // function to flick through question
-function questionsClickFunc(){
-    if(this.value !== questionsArr[questionsIndex].answer){
+function questionsClickFunc() {
+    if (this.value !== questionsArr[questionsIndex].answer) {
         secondsLeft -= 15;
 
-        if(secondsLeft < 0){
+        if (secondsLeft < 0) {
             secondsLeft = 0;
         }
-timeEl.textContent  = secondsLeft;
+        timeEl.textContent = secondsLeft;
 
-feedbackTracking.textContent = 'Wrong answer';
+        feedbackTracking.textContent = 'Wrong answer';
 
 
     } else {
         feedbackTracking.textContent = 'Correct answer';
     }
 
-feedbackTracking.setAttribute('class', 'feedback');
-setTimeout(function(){
-    feedbackTracking.setAttribute('class', 'feeback hide')
-},1000);
+    feedbackTracking.setAttribute('class', 'feedback');
+    setTimeout(function () {
+        feedbackTracking.setAttribute('class', 'feeback hide')
+    }, 1000);
 
-questionsIndex ++;
+    questionsIndex++;
 
-if(questionsIndex === questionsArr.length){
-    endQuiz()
-} else {
-    receiveQuestions()
-}
+    if (questionsIndex === questionsArr.length) {
+        endQuiz()
+    } else {
+        receiveQuestions()
+    }
 
 };
 //function to end Quiz
-function endQuiz(){
+function endQuiz() {
     clearInterval(timer);
 
     // var highScoreEl = document.querySelector('#highscore-section');
@@ -100,7 +100,7 @@ function endQuiz(){
 
 
     var lastScore = document.querySelector('#final-score');
-    lastScore.textContent =  secondsLeft;
+    lastScore.textContent = secondsLeft;
 
     questions.setAttribute('class', 'hide');
 }
@@ -111,34 +111,30 @@ startButton.onclick = startQuiz;
 // Introduce questions 
 var questionsArr = [
     {
-        title: "Question 1",
-        choices: ["A","b","c","d"],
-        answer: "d",
-        
+        title: 'Question 1 = What is JavaScript',
+        choices: ['A = An orange cake', 'b = An actors prop', 'c = A coding language'],
+        answer: 'c',
     }
-    , 
+    ,
     {
-        title: "Question 2",
-        choices: ["1","2","3","4"],
-        answer: "4",
+        title: 'Question 2 = What is a Boolean?',
+        choices: ['1 = An Aussie toy', '2 = A Datatype', '3 = The latest dance craze'],
+        answer: '2',
     },
     {
-        title: "Question 3",
-        choices: ["data","set","match","flex"],
-        answer: "flex",
+        title: ' Question 3 = What is Boolean used for?',
+        choices: ['a = To combine or exclude keywords for a focused a search,', 'b = To start drama', 'c = hair removal'],
+        answer: 'a = To combine or exclude keywords for a focused a search',
     },
     {
-        title: "Question 4",
-        choices: ["me","say","no","way"],
-        answer: "say",
-        
-    }, 
-
-{
-    title: "Question 5",
-    choices: ["litty","titty","in","the","city"],
-    answer: "no",
-    
-}, 
+        title: 'Question 4 = What is string in data type?',
+        choices: ['1 = an array data structure of bytes (or words) that stores a sequence of elements', '2 = The place to be on friday night', '3 = nothing'],
+        answer: '1 = an array data structure of bytes (or words) that stores a sequence of elements',
+    },
+    {
+        title: 'Question 5 - What is a string vs integer?',
+        choices: ['a = Integer is a numeric value, while String is a character value represented in quotes', 'b = The latest Star Warz Movie', 'c = The next big MMA fight '],
+        answer: 'a = Integer is a numeric value, while String is a character value represented in quotes'
+    },
 ];
 
